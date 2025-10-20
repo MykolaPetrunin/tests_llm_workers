@@ -1,6 +1,4 @@
 import { OpenAI } from 'openai';
-
-import { serverLogger } from '@/lib/logger';
 import { Logger } from 'openai/client';
 
 const client = new OpenAI({

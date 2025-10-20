@@ -1,5 +1,5 @@
-import { QuestionAnswersSuggestion } from "@/lib/aiActions/getQusetionAnswersSuggestions";
-import prisma from "@/lib/prisma/prisma";
+import { QuestionAnswersSuggestion } from "@/lib/aiActions/getQusetionAnswersSuggestions.js";
+import prisma from "@/lib/prisma/prisma.js";
 import { Logger } from "openai/client";
 
 export interface CreatedAnswer {

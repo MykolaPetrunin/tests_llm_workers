@@ -1,9 +1,9 @@
 import { Logger } from "openai/client";
-import { CreatedQuestion } from "./createTopicQuestionsFromSuggestions";
-import { CreatedAnswer } from "./bulkInsertAnswers";
-import { getQuestionTheorySuggestions } from "@/lib/aiActions/getQuestionTheorySuggestions";
-import { bulkInsertTheory } from "./bulkInsertTheory";
-import prisma from "@/lib/prisma/prisma";
+import { CreatedQuestion } from "./createTopicQuestionsFromSuggestions.js";
+import { CreatedAnswer } from "./bulkInsertAnswers.js";
+import { getQuestionTheorySuggestions } from "@/lib/aiActions/getQuestionTheorySuggestions.js";
+import { bulkInsertTheory } from "./bulkInsertTheory.js";
+import prisma from "@/lib/prisma/prisma.js";
 
 interface FillQuestionTheoryProps {
   readonly question: CreatedQuestion;

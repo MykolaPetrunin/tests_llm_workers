@@ -1,5 +1,5 @@
-import { QuestionTheorySuggestion } from "@/lib/aiActions/getQuestionTheorySuggestions";
-import prisma from "@/lib/prisma/prisma";
+import { QuestionTheorySuggestion } from "@/lib/aiActions/getQuestionTheorySuggestions.js";
+import prisma from "@/lib/prisma/prisma.js";
 import { Logger } from "openai/client";
 
 export interface UpdatedQuestion {

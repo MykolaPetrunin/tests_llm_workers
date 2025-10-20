@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { z } from 'zod';
-import { fillBookWithData } from '../workers/fillBookWorker.js';
+import { fillBookWithData, type Book } from '../workers/fillBookWorker.js';
 import prisma from '@/lib/prisma/prisma.js';
 
 const StartFillingTopicsSchema = z.object({
@@ -39,7 +39,9 @@ export async function topicsRoutes(fastify: FastifyInstance) {
       
       fastify.log.info({ bookId }, 'Received request to start filling topics with data');
 
-      const book = await prisma.book.findUnique({
+      const prismaClient = prisma as any;
+
+      const book = await prismaClient.book.findUnique({
         where: { id: bookId },
         select: {
           id: true,
@@ -69,7 +71,7 @@ export async function topicsRoutes(fastify: FastifyInstance) {
       }, 'Book found, starting processing');
   
   
-      await prisma.book.update({
+      await prismaClient.book.update({
         where: { id: bookId },
         data: { is_generating: true }
       });
@@ -78,7 +80,7 @@ export async function topicsRoutes(fastify: FastifyInstance) {
       fastify.log.info({ bookId }, 'Set is_generating = true');
       
       
-      fillBookWithData(book as any, fastify.log as any).catch(error => {
+      fillBookWithData(book as Book, fastify.log as any).catch(error => {
         fastify.log.error({ bookId, error }, 'Worker failed');
       });
       

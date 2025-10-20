@@ -1,5 +1,5 @@
-import { TopicQuestionSuggestion } from "@/lib/aiActions/getTopicQuestionsSuggestions";
-import prisma from "@/lib/prisma/prisma";
+import { TopicQuestionSuggestion } from "@/lib/aiActions/getTopicQuestionsSuggestions.js";
+import prisma from "@/lib/prisma/prisma.js";
 import { Logger } from "openai/client";
 import { Prisma } from "@prisma/client";
 const levelKeyValues = ['junior', 'middle', 'senior'] as const;

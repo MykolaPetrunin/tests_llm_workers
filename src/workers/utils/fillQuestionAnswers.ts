@@ -1,7 +1,7 @@
 import { Logger } from "openai/client";
-import { CreatedQuestion } from "./createTopicQuestionsFromSuggestions";
-import { getQusetionAnswersSuggestions, QuestionAnswersSuggestion } from "@/lib/aiActions/getQusetionAnswersSuggestions";
-import { bulkInsertAnswers, CreatedAnswer } from "./bulkInsertAnswers";
+import { CreatedQuestion } from "./createTopicQuestionsFromSuggestions.js";
+import { getQusetionAnswersSuggestions, QuestionAnswersSuggestion } from "@/lib/aiActions/getQusetionAnswersSuggestions.js";
+import { bulkInsertAnswers, CreatedAnswer } from "./bulkInsertAnswers.js";
 
 interface FillQuestionAnswersProps {
   readonly question: CreatedQuestion;
@@ -54,4 +54,3 @@ export async function fillQuestionAnswers({ question, logger, book, topic }:Fill
     throw error;
   }
 }
-

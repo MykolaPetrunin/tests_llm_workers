@@ -19,6 +19,7 @@ export interface Book {
 export async function fillBookWithData(book: Book, logger: Logger) {
   logger.info({ bookId: book.id }, 'Starting fill book worker');
   let bookId = book.id;
+  const prismaClient = prisma as any;
     try {
       markWorkerStarted(logger);
 
@@ -73,7 +74,7 @@ export async function fillBookWithData(book: Book, logger: Logger) {
       logger.error({ bookId, error }, 'Error in fill book worker');
       markWorkerError(error, logger);
     }finally {
-      await prisma.book.update({
+      await prismaClient.book.update({
         where: { id: book.id },
         data: { is_generating: false }
       });
